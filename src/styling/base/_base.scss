@@ -1,0 +1,40 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: $m_size;
+}
+
+.login-register-page {
+  display: block;
+  max-width:1200px;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+input {
+  border: 1px solid #999999;
+  color: #666666;
+  margin-bottom: 20px;
+  padding: 8px 12px;
+  width: 100%;
+  font-size: 14px;
+}
+
+button {
+  background-color: transparent;
+  border: 1px solid grey;
+  color: black;
+  padding: 15px 32px;
+  font-family: 'Montserrat', Arial, sans-serif;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: $m_size;
+}

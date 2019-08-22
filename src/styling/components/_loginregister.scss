@@ -1,0 +1,25 @@
+.login-register-button-group {
+  text-align: center;
+  display: flex;
+  justify-content:center;
+  margin-bottom: 40px;
+}
+.login-register-button {
+  border: none;
+  color: #133173;
+  font-size: $l_size;
+  font-weight: 600;
+  outline: none !important;
+  transition: all 0.3s ease 0s;
+  &:hover {
+    color: #13b3f3;
+  }
+}
+
+
+.login-form, .register-form {
+  display:block;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}

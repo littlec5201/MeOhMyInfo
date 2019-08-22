@@ -35,39 +35,20 @@ class Register extends React.Component{
     else
     {
       this.setState(() => ({error: ''}));
-      let options = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: {
-          username: this.state.username,
-          email: this.state.email,
-          password: this.state.password,
-        }
-      }
-      // var url = `http://localhost:3000/users?username=${this.state.username}&password=${this.state.password}`;
-      // var res = fetch(url, options).then(res => res.json()).then((rspns) => {
-      //   // if (rspns.length === 1) {
-
-      //   // } else {
-      //   //   this.setState(() => ({error: `This person imposter, you're imposter fuck u`}));
-      //   // }
-      // })
     }
   }
   render() {
     return (
-      <div>
+      <div className="register-form">
       <form onSubmit={this.handleAddOption}>
       {this.state.error && <p>{this.state.error}</p>}
-      <h3>Register Dickhead</h3>
+      <h3>Register a new account</h3>
       <div>
-        <label>Username</label>
+        <label className="user-label">Username</label>
         <input name="username" value={this.state.username} type="text" onChange={this.handleUsernameChange}/>
       </div>
       <div>
-        <label>Email</label>
+        <label className="user-label">Email</label>
         <input name="email" value={this.state.email} type="text" onChange={this.handlEmailChange}/>
       </div>
       <div>
