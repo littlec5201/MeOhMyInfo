@@ -5,7 +5,6 @@ class Login extends React.Component{
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        console.log(user);
         browserHistory.push('/profile');
       }
     });
@@ -17,7 +16,6 @@ class Login extends React.Component{
 
     firebaseApp.auth().signInWithPopup(provider)
       .then(result => {
-        console.log(result);
       })
   }
   render() {
