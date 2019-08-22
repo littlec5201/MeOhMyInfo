@@ -1,35 +1,42 @@
 import React from 'react';
 import { firebase } from '../firebase/firebase';
 
-class Login extends React.Component{
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        browserHistory.push('/profile');
-      }
-    });
+class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      error: ''
+    }
+    this.handleEmail = this.handleEmail.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  authenticate() {
-    var provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope('profile');
-    provider.addScope('email');
 
-    firebaseApp.auth().signInWithPopup(provider)
-      .then(result => {
-      })
+  handleEmail() {
+    this.setState({email});
+  }
+
+  handlePassword() {
+    this.setState({password})
+  }
+
+  handleSubmit() {
+
   }
   render() {
     return (
       <div className="login-form">
-        <form onSubmit={this.authenticate.bind(this)}>
-          <h3>Sign in to your account</h3>
+        <form>
+          <h3>Sign in to your account dickhead</h3>
           <div>
-            <label className="user-label">Username</label>
-            <input name="username" value="" type="text"/>
+            <label className="user-label">Email</label>
+            <input name="email" value={this.state.email} onChange={this.handleEmail} type="text"/>
           </div>
           <div>
             <label className="user-label">Password</label>
-            <input name="password" value="" type="password"/>
+            <input name="password" value={this.state.password} onChange={this.handlePassword} type="password"/>
           </div>
           <div>
             <button type="submit">Submit</button>

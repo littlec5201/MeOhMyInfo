@@ -6,34 +6,35 @@ class App extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      login: true,
-      register: false
+      selected: 'login'
     }
     this.showLogin = this.showLogin.bind(this);
     this.showRegister = this.showRegister.bind(this);
+    this.isActive = this.isActive.bind(this);
   }
   showLogin() {
     this.setState({
-      login: true,
-      register: false
+      selected: 'login'
     });
   }
   showRegister() {
     this.setState({
-      login: false,
-      register: true
+      selected: 'register'
     });
+  }
+  isActive(val) {
+    return 'login-register-button ' + ((val === this.state.selected) ? 'active' : '');
   }
   render () {
     return (
       <div className="login-register-page">
         <div className="login-register-button-group">
-          <button className="login-register-button" onClick={this.showLogin}>Login</button>
-          <button className="login-register-button" onClick={this.showRegister}>Register</button>
+          <button className={this.isActive('login')} onClick={this.showLogin}>Login</button>
+          <button className={this.isActive('register')} onClick={this.showRegister}>Register</button>
         </div>
 
-        {this.state.login && <Login/>}
-        {this.state.register && <Register/>}
+        {this.state.selected === 'login' && <Login/>}
+        {this.state.selected === 'register' && <Register/>}
       </div>
     );
   }

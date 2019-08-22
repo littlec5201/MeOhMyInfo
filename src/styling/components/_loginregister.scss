@@ -11,6 +11,9 @@
   font-weight: 600;
   outline: none !important;
   transition: all 0.3s ease 0s;
+  .active {
+    color: #13b3f3;
+  }
   &:hover {
     color: #13b3f3;
   }
