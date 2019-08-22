@@ -4,19 +4,13 @@ class Register extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
       email: "",
       password: "",
       error: ''
     }
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.handleAddOption = this.handleAddOption.bind(this);
-  }
-  handleUsernameChange(e) {
-    var change = e.target.value;
-    this.setState(() => ({"username": change}));
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleEmailChange(e) {
     var change = e.target.value;
@@ -27,7 +21,7 @@ class Register extends React.Component{
     this.setState(() => ({"password": change}));
 
   }
-  handleAddOption(e) {
+  handleSubmit(e) {
     e.preventDefault();
     if (!this.state.username || !this.state.email || !this.state.password) {
       this.setState(() => ({error: 'Please provide all fields'}));
