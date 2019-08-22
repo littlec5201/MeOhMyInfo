@@ -26,10 +26,10 @@ class App extends React.Component{
   }
   render () {
     return (
-      <div>
-        <div>
-          <button onClick={this.showLogin}>Login</button>
-          <button onClick={this.showRegister}>Register</button>
+      <div className="login-register-page">
+        <div className="login-register-button-group">
+          <button className="login-register-button" onClick={this.showLogin}>Login</button>
+          <button className="login-register-button" onClick={this.showRegister}>Register</button>
         </div>
 
         {this.state.login && <Login/>}

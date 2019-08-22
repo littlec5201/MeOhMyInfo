@@ -1,63 +1,35 @@
 import React from 'react';
+import { firebase } from '../firebase/firebase';
 
 class Login extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      password: "",
-      error: ''
-    }
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.handleAddOption = this.handleAddOption.bind(this);
-  }
-  handleUsernameChange(e) {
-    var change = e.target.value;
-    this.setState(() => ({"username": change}));
-  }
-  handlePasswordChange(e) {
-    var change = e.target.value;
-    this.setState(() => ({"password": change}));
-
-  }
-  handleAddOption(e) {
-    e.preventDefault();
-    if (!this.state.username || !this.state.password) {
-      this.setState(() => ({error: 'Please provide username & password'}));
-    }
-    else
-    {
-      this.setState(() => ({error: ''}));
-      let options = {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        browserHistory.push('/profile');
       }
-      var url = `http://localhost:3000/users?username=${this.state.username}&password=${this.state.password}`;
-      var res = fetch(url, options).then(res => res.json()).then((rspns) => {
-        if (rspns.length === 1) {
+    });
+  }
+  authenticate() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope('profile');
+    provider.addScope('email');
 
-        } else {
-          this.setState(() => ({error: `This person imposter, you're imposter fuck u`}));
-        }
+    firebaseApp.auth().signInWithPopup(provider)
+      .then(result => {
       })
-    }
   }
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleAddOption}>
-          {this.state.error && <p>{this.state.error}</p>}
-          <h3>Login Dickhead</h3>
+      <div className="login-form">
+        <form onSubmit={this.authenticate.bind(this)}>
+          <h3>Sign in to your account</h3>
           <div>
-            <label>Username</label>
-            <input name="username" value={this.state.username} type="text" onChange={this.handleUsernameChange}/>
+            <label className="user-label">Username</label>
+            <input name="username" value="" type="text"/>
           </div>
           <div>
-            <label>Password</label>
-            <input name="password" value={this.state.password} type="password"  onChange={this.handlePasswordChange}/>
+            <label className="user-label">Password</label>
+            <input name="password" value="" type="password"/>
           </div>
           <div>
             <button type="submit">Submit</button>
