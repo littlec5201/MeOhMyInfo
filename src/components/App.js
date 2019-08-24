@@ -14,6 +14,7 @@ class App extends React.Component {
     this.showRegister = this.showRegister.bind(this);
     this.isActive = this.isActive.bind(this);
   }
+
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
@@ -30,22 +31,26 @@ class App extends React.Component {
       }
     });
   }
+
   showLogin() {
     this.setState({
       selected: "login"
     });
   }
+
   showRegister() {
     this.setState({
       selected: "register"
     });
   }
+
   isActive(val) {
     return (
       "login-register-button " +
       (val === this.state.selected ? "login-register-button-active" : "")
     );
   }
+
   render() {
     return (
       <div className="login-register-page">
