@@ -19,10 +19,17 @@
   }
 }
 
+.login-register-button-active {
+  color: #13b3f3;
+}
 
 .login-form, .register-form {
   display:block;
   max-width: 600px;
   width: 100%;
   margin: 0 auto;
+}
+
+.login-form-error {
+  color: red;
 }
