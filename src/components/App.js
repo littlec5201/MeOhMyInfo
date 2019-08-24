@@ -1,40 +1,51 @@
-import React from 'react';
-import Login from './Login';
-import Register from './Register';
+import React from "react";
+import Login from "./Login";
+import Register from "./Register";
+import { Landing } from "./Landing";
 
-class App extends React.Component{
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: 'login'
-    }
+      selected: "login"
+    };
     this.showLogin = this.showLogin.bind(this);
     this.showRegister = this.showRegister.bind(this);
     this.isActive = this.isActive.bind(this);
   }
   showLogin() {
     this.setState({
-      selected: 'login'
+      selected: "login"
     });
   }
   showRegister() {
     this.setState({
-      selected: 'register'
+      selected: "register"
     });
   }
   isActive(val) {
-    return 'login-register-button ' + ((val === this.state.selected) ? 'active' : '');
+    return (
+      "login-register-button " + (val === this.state.selected ? "active" : "")
+    );
   }
-  render () {
+  render() {
     return (
       <div className="login-register-page">
+        <Landing />
         <div className="login-register-button-group">
-          <button className={this.isActive('login')} onClick={this.showLogin}>Login</button>
-          <button className={this.isActive('register')} onClick={this.showRegister}>Register</button>
+          <button className={this.isActive("login")} onClick={this.showLogin}>
+            Login
+          </button>
+          <button
+            className={this.isActive("register")}
+            onClick={this.showRegister}
+          >
+            Register
+          </button>
         </div>
 
-        {this.state.selected === 'login' && <Login/>}
-        {this.state.selected === 'register' && <Register/>}
+        {this.state.selected === "login" && <Login />}
+        {this.state.selected === "register" && <Register />}
       </div>
     );
   }

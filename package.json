@@ -16,11 +16,12 @@
     "moment": "*",
     "node-sass": "*",
     "normalize.css": "7.0.0",
+    "ramda": "^0.26.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "uuid": "*",
     "sass-loader": "6.0.6",
     "style-loader": "0.18.2",
+    "uuid": "*",
     "webpack": "^3.1.0"
   },
   "scripts": {
