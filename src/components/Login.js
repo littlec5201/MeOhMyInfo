@@ -51,12 +51,7 @@ class Login extends React.Component {
   handleAuthChange(e) {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        // window.location = 'thank-you'
-        let email = user.email;
-        console.log(email + " logged in");
-      } else {
-        // window.location = ""
-        console.log("not logged in");
+        this.setState(() => ({ error: "" }));
       }
     });
   }
