@@ -47,6 +47,7 @@ class Login extends React.Component {
         });
     }
   }
+
   handleAuthChange(e) {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
@@ -59,6 +60,7 @@ class Login extends React.Component {
       }
     });
   }
+
   render() {
     return (
       <div className="login-form">
